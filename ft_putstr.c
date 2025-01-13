@@ -1,53 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   treat_c.c                                          :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ligharbi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/13 09:54:35 by ligharbi          #+#    #+#             */
-/*   Updated: 2025/01/13 09:54:54 by ligharbi         ###   ########.fr       */
+/*   Created: 2025/01/13 11:50:54 by ligharbi          #+#    #+#             */
+/*   Updated: 2025/01/13 11:57:43 by ligharbi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
 
-int	ft_strlen(const char *s)
+int	ft_putstr(char	*str)
 {
-	int	n;
+	int	i;
 
-	n = 0;
-	while (s[n] != '\0')
+	i = 0;
+	while(*str != '\0')
 	{
-		n ++;
+		write(1, str, 1);
+		i++;
+		str ++;
 	}
-	return (n);
+	return (i);
 }
 
-char	*treat_c(char c)
+int	ft_putchar(char c)
 {
-	char	*r;
-	r = malloc(2);
-	if (r == NULL)
-		return NULL;
-	r[0] = c;
-	r[1] = '\0';
-	return (r);
+	write(1, &c, 1);
+	return (1);
 }
-char *treat_s(char *s)
-{
-	int	len;
-	char	*r;
-
-	len = ft_strlen(s);
-	r = malloc(len + 1);
-	if (r == NULL)
-		return (NULL);
-	while (*s)
-	{
-		*r = *s;
-		r ++;
-			s ++;
-		}
-	*r = '\0';
-	       return(r - len);
-}       
