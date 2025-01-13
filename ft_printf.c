@@ -13,7 +13,7 @@ int	ft_printf (const char *s, ...)
 			while (is_ident(s) == 1)
 			{
 				if (*(s+1) == 'd' || *(s+1) == 'i')
-					str= treat_d(va_arg(arg, int));
+					ret_total_input += print_i(va_arg(arg, int));
 				if (*(s +1) == 'c')
 					str = treat_c(va_arg(arg, char));
 				if (*(s + 1) == '%' && *s == '%')
@@ -22,8 +22,11 @@ int	ft_printf (const char *s, ...)
                                         str = treat_p(va_arg(arg, unsigned long long));
 				if (*(s + 1) == 'x' || *(s + 1) == 'X')
 					str = treat_hexa(va_arg(arg, unsigned int));
-				ret_total_inputs += ft_putstr(str);
-				free(str);
+				if (str)
+				{
+					ret_total_inputs += ft_putstr(str);
+					free(str);
+				}
 				s++;
 			}
 		}
