@@ -16,6 +16,8 @@ int	ft_strlen(const char *s)
 	int	n;
 
 	n = 0;
+	if (s == NULL)
+		return (0);
 	while (s[n] != '\0')
 	{
 		n ++;
@@ -38,6 +40,8 @@ char *treat_s(char *s)
 	int	len;
 	char	*r;
 
+	if (s == NULL)
+		return (NULL);
 	len = ft_strlen(s);
 	r = malloc(len + 1);
 	if (r == NULL)

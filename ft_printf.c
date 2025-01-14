@@ -25,16 +25,16 @@ int	ft_printf (const char *s, ...)
 	{
 		if(*s == '%')
 		{
-
-			while (is_ident(*(s + 1)) == 1)
+			s++;
+			while (is_ident(*(s)) == 1)
 			{
-				if(is_ident(*s) == 0)
+				if(is_ident(*(s -1)) == 0)
 					ret_total_inputs += ft_putchar(*s);
-				if (*(s + 1) == 'd' || *(s+1) == 'i')
+				if (*(s) == 'd' || *(s) == 'i')
 					ret_total_inputs += print_i(va_arg(arg, int));
-				else if (*(s + 1) == 'u')
+				else if (*(s) == 'u')
 					ret_total_inputs += print_u(va_arg(arg, unsigned int));
-				else if (*(s + 1) == 'c')
+				else if (*(s) == 'c')
 				{
 					str = treat_c(va_arg(arg, int));
 					if(*str == '\0')
@@ -42,13 +42,13 @@ int	ft_printf (const char *s, ...)
 						ret_total_inputs += ft_putchar(*str);
 					}
 				}
-				else if (*(s + 1) == '%' && *s == '%')
+				else if (*(s - 1) == '%' && *s == '%')
 					str = treat_c('%');
-				else if (*(s + 1) == 's')
+				else if (*(s) == 's')
 					str = treat_s(va_arg(arg, char *));
-				else if (*(s + 1) == 'p')
+				else if (*(s) == 'p')
                     str = treat_p(va_arg(arg, unsigned long long));
-				else if (*(s + 1) == 'x' || *(s + 1) == 'X')
+				else if (*(s) == 'x' || *(s) == 'X')
 					str = treat_hex(va_arg(arg, unsigned int), *s);
 				if (str)
 				{
@@ -56,7 +56,7 @@ int	ft_printf (const char *s, ...)
 					free(str);
 					str = NULL;
 				}
-				s+=2;
+				s++;
 			}
 		}
 		else
