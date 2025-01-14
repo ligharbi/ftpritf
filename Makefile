@@ -15,7 +15,7 @@ CC = gcc
 
 CFLAGS += -Wall -Wextra -Werror
 
-SRC = ft_printf.c  is_ident.c  treat_c.c  treat_hex.c  treat_p.c ft_putstr.c print_i.c
+SRC = ft_printf.c  is_ident.c  treat_c.c  treat_hex.c  treat_p.c ft_putstr.c print_i.c print_u.c
 
 BNS =
 

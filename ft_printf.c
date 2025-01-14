@@ -20,6 +20,7 @@ int	ft_printf (const char *s, ...)
 
 	va_start(arg, s);
 	ret_total_inputs = 0;
+	str = NULL;
 	while (*s != '\0')
 	{
 		if(*s == '%')
@@ -31,7 +32,9 @@ int	ft_printf (const char *s, ...)
 					ret_total_inputs += ft_putchar(*s);
 				if (*(s + 1) == 'd' || *(s+1) == 'i')
 					ret_total_inputs += print_i(va_arg(arg, int));
-				if (*(s + 1) == 'c')
+				else if (*(s + 1) == 'u')
+					ret_total_inputs += print_u(va_arg(arg, unsigned int));
+				else if (*(s + 1) == 'c')
 				{
 					str = treat_c(va_arg(arg, int));
 					if(*str == '\0')
@@ -39,13 +42,13 @@ int	ft_printf (const char *s, ...)
 						ret_total_inputs += ft_putchar(*str);
 					}
 				}
-				if (*(s + 1) == '%' && *s == '%')
+				else if (*(s + 1) == '%' && *s == '%')
 					str = treat_c('%');
-				if (*(s + 1) == 's')
+				else if (*(s + 1) == 's')
 					str = treat_s(va_arg(arg, char *));
-				if (*(s + 1) == 'p')
+				else if (*(s + 1) == 'p')
                     str = treat_p(va_arg(arg, unsigned long long));
-				if (*(s + 1) == 'x' || *(s + 1) == 'X')
+				else if (*(s + 1) == 'x' || *(s + 1) == 'X')
 					str = treat_hex(va_arg(arg, unsigned int), *s);
 				if (str)
 				{
@@ -66,10 +69,8 @@ int	ft_printf (const char *s, ...)
 	return (ret_total_inputs);
 }
 
-/*
-int	main()
-{
-	char	*str = "ciao";
-	printf("retV: %d\n", printf(" %c %c %c ", '0', 0, '1'));
-	printf("retF: %d\n", ft_printf(" %c %c %c ", '0', 0, '1'));
-}*/
+// int	main()
+// {
+// 	printf("retV: %d\n", printf(" %d %u %i ", 1, 1, 1));
+// 	printf("retF: %d\n", ft_printf(" %d %u %i ", 1, 1, 1));
+// }
