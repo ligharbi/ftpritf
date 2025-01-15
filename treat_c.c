@@ -40,18 +40,33 @@ char *treat_s(char *s)
 	int	len;
 	char	*r;
 
-	if (s == NULL)
-		return (NULL);
-	len = ft_strlen(s);
-	r = malloc(len + 1);
-	if (r == NULL)
-		return (NULL);
-	while (*s)
+	if (!s)
 	{
-		*r = *s;
-		r ++;
+		r = malloc (7);
+		if (r == NULL)
+			return (NULL);
+		r[0] = '(';
+		r[1] = 'n';
+		r[2] = 'u';
+		r[3] = 'l';
+		r[4] = 'l';
+		r[5] = ')';
+		r[6] = '\0';
+		return (r);
+	}
+	else
+	{
+		len = ft_strlen(s);
+		r = malloc(len + 1);
+		if (r == NULL)
+			return (NULL);
+		while (*s != '\0')
+		{
+			*r = *s;
+			r ++;
 			s ++;
 		}
-	*r = '\0';
-	       return(r - len);
-}       
+		*r = '\0';
+		return(r - len);
+	}
+}

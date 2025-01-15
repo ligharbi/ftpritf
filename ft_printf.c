@@ -68,9 +68,12 @@ int	ft_printf (const char *s, ...)
 	va_end(arg);
 	return (ret_total_inputs);
 }
+/*
+#include <stdio.h>
 
-// int	main()
-// {
-// 	printf("retV: %d\n", printf(" %d %u %i ", 1, 1, 1));
-// 	printf("retF: %d\n", ft_printf(" %d %u %i ", 1, 1, 1));
-// }
+ int	main()
+ {
+ 	printf("retV: %d\n", printf(" NULL %s NULL ", "NULL"));
+ 	printf("retF: %d\n", ft_printf(" NULL %s NULL ", "NULL"));
+ }
+*/

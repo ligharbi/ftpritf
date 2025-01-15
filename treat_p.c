@@ -29,6 +29,20 @@ char	*treat_p(unsigned long long p)
 {
 	int	len;
 	char	*ret;
+	
+	if (p == 0)
+	{
+		ret = malloc (6);
+		if (ret == NULL)
+			return (NULL);
+		ret[0] = '(';
+		ret[1] = 'n';
+		ret[2] = 'i';
+		ret[3] = 'l';
+		ret[4] = ')';
+		ret[5] = '\0';
+		return (ret);
+	}
 	len = length(p) + 2;
 	ret = malloc (len + 1);
 	if (ret == NULL)
@@ -37,8 +51,8 @@ char	*treat_p(unsigned long long p)
 	ret[1] = 'x';
 	ret[len] = '\0';
 	len --;
-	if (p == 0)
-		ret [len] = '0';
+	//if (p == 0)
+	//	ret [len] = '0';
 	while (p > 0)
         {
                 if (p % 16 >= 10)

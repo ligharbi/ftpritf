@@ -13,19 +13,9 @@
 
 void	ex(int b)
 {
-	if (b == 2147483647)
-	{
-		write (1, "2147483647", 10);
-		return ;
-	}
 	if (b == -2147483648)
 	{
 		write (1, "-2147483648", 11);
-		return ;
-	}
-	if (b == -2147483647)
-	{
-		write (1, "-2147483647", 11);
 		return ;
 	}
 	if (b == 0)
@@ -36,27 +26,16 @@ void	ex(int b)
 	else
 		return;
 }
-
 int	ex_length(int b)
 {
-    if (b == 2147483647)
-    {
-        write (1, "2147483647", 10);
-        return (10);
-    }
     if (b == -2147483648)
     {
-        write (1, "-2147483648", 11);
-        return (11);
-    }
-    if (b == -2147483647)
-    {
-        write (1, "-2147483647", 11);
+       // write (1, "-2147483648", 11);
         return (11);
     }
     if (b == 0)
     {
-        write (1, "0", 1);
+       // write (1, "0", 1);
         return (1);
     }
     else
@@ -68,7 +47,7 @@ void	ft_putnbr(int nb)
 	int	r;
 
 	r = 0;
-	if (nb == 0 || nb == 2147483647 || nb == -2147483648 || nb == -2147483647)
+	if (nb == 0 || nb == -2147483648)
 		return (ex(nb));
 	if (nb < 0)
 	{
@@ -86,11 +65,11 @@ int	length_i(int n)
 	int	r;
 
 	r = 0;
-	if (n == 0 || n == 2147483647 || n == -2147483648 || n == -2147483647)
+	if (n == 0 || n == -2147483648)
 		return (ex_length(n));
 	if (n < 0)
 	{
-		n -= n;
+		n = - n;
 		r++;
 	}
 	while (n > 0)
