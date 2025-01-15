@@ -17,15 +17,24 @@ int	ft_printf (const char *s, ...)
 	char	*str;
 	int		ret_total_inputs;
 	va_list	arg;
+	//int i;
+	//int b = 0;
 
 	va_start(arg, s);
 	ret_total_inputs = 0;
+	//i = 0;
 	str = NULL;
 	while (*s != '\0')
 	{
 		if(*s == '%')
 		{
 			s++;
+			if (*s == '%') // Handle consecutive '%'
+			{
+				ret_total_inputs += ft_putchar('%'); // Print a single '%'
+				s++;
+				continue;
+			}
 			while (is_ident(*(s)) == 1)
 			{
 				if(is_ident(*(s -1)) == 0)
@@ -42,14 +51,28 @@ int	ft_printf (const char *s, ...)
 						ret_total_inputs += ft_putchar(*str);
 					}
 				}
-				else if (*(s - 1) == '%' && *s == '%')
-					str = treat_c('%');
 				else if (*(s) == 's')
 					str = treat_s(va_arg(arg, char *));
 				else if (*(s) == 'p')
-                    str = treat_p(va_arg(arg, unsigned long long));
+                   			str = treat_p(va_arg(arg, unsigned long long));
 				else if (*(s) == 'x' || *(s) == 'X')
 					str = treat_hex(va_arg(arg, unsigned int), *s);
+				else if (*(s - 1) == '%' && *s == '%')
+				{
+					str = treat_c('%');
+					/*while(*s == '%')
+					 {
+					 	i++;
+					 	s++;
+					 	if ( b == 0)
+					 	{
+					 		ret_total_inputs += ft_putchar ('%');
+					 		b = 1;
+					 	}else
+					 	b = 0;
+					 }*/
+						
+				}
 				if (str)
 				{
 					ret_total_inputs += ft_putstr(str);
