@@ -14,9 +14,9 @@
 char	*ft_toupper(char *s)
 {
 	int	i;
-	
+
 	i = 0;
-	while(s[i] != '\0')
+	while (s[i] != '\0')
 	{
 		if (s[i] >= 'a' && s[i] <= 'z')
 			s[i] = s[i] - 32;
@@ -27,13 +27,13 @@ char	*ft_toupper(char *s)
 
 char	*treat_hex(unsigned int n, char c)
 {
-	int	len;
+	int		len;
 	char	*s;
-	
+
 	len = length_hexa(n);
 	s = malloc (len + 1);
 	if (s == NULL)
-		return NULL;
+		return (NULL);
 	s[len] = '\0';
 	if (n == 0)
 		s[0] = '0';
@@ -50,9 +50,11 @@ char	*treat_hex(unsigned int n, char c)
 		return (ft_toupper(s));
 	return (s);
 }
+
 int	length_hexa(unsigned int n)
 {
 	int	i;
+
 	i = 0;
 	if (n == 0)
 		i ++;
@@ -61,5 +63,5 @@ int	length_hexa(unsigned int n)
 		i += 1;
 		n = n / 16;
 	}
-	return i;
+	return (i);
 }

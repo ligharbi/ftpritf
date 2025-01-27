@@ -13,30 +13,30 @@
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
-#include <stdlib.h>
-#include <unistd.h>
-#include <stdarg.h>
-#include <stdio.h>
+# include <stdlib.h>
+# include <unistd.h>
+# include <stdarg.h>
 
-int	ft_printf(const char *s, ...);
-int	is_ident(char c);
+int		divide_printf(const char *s, va_list arg);
+int		divide_printf_2(const char *s, va_list arg);
+int		ft_printf(const char *s, ...);
+char	*ft_strcpy(char *dst, char *src);
 void	ex(int b);
-int	ex_length(int b);
+int		ex_length(int b);
 void	ft_putnbr(int nb);
-int	print_i(int d);
-int	length_u(unsigned int n);
-void    ft_putnbr_u(unsigned int nb);
-int	print_u(unsigned int d);
-int	ft_strlen(const char *s);
+int		print_i(int d);
+int		length_u(unsigned int n);
+void	ft_putnbr_u(unsigned int nb);
+int		print_u(unsigned int d);
+int		ft_strlen(const char *s);
 char	*treat_c(char c);
 char	*treat_s(char *s);
 char	*ft_toupper(char *s);
-int	length_hexa(unsigned int n);
+int		length_hexa(unsigned int n);
 char	*treat_hex(unsigned int n, char c);
-int	length(unsigned long long n);
+int		length(unsigned long long n);
 char	*treat_p(unsigned long long p);
-int	ft_putstr(char *str);
-int	ft_putchar(char c);
-
+int		ft_putstr(char *str);
+int		ft_putchar(char c);
 
 #endif

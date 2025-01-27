@@ -49,5 +49,5 @@ int	print_u(unsigned int d)
 
 	ret = length_u(d);
 	ft_putnbr_u(d);
-	return(ret);
+	return (ret);
 }
